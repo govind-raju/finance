@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
 *{
     font-family: 'Merriweather';
@@ -27,7 +28,8 @@ body {
     background-color: var(--secondary-color);
     color: var(--text-dark);
     line-height: 1.6;
-    background-image: url(./imgg.jpg); 
+    /* background-image: url(./imgg.jpg);  */
+    /* background-color: lightblue; */
     background-repeat: no-repeat;
     background-size: 100% 115%;
     background-position: bottom 10%;
@@ -83,7 +85,7 @@ th:hover{
     color: tomato;
 }
 .colorMe{
-    color: white;
+    color: black;
 }
 #toHover:hover{
    color: black;
