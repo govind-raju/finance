@@ -29,7 +29,8 @@ body {
     color: var(--text-dark);
     line-height: 1.6;
     /* background-image: url(./imgg.jpg);  */
-    /* background-color: lightblue; */
+/*     background-color: lightblue; */
+    background-color: #e5e5e5;
     background-repeat: no-repeat;
     background-size: 100% 115%;
     background-position: bottom 10%;
