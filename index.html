@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
 </head>
-<body>
+<body style="background-color: #e5e5e5">
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
@@ -140,7 +140,7 @@
         for (const client of clients) {
             try {
                 // Fetch additional details for the client
-                const clientDetailsResponse = await fetch(/ClientDetails/${client.ClientID});
+                const clientDetailsResponse = await fetch(`/ClientDetails/${client.ClientID}`);
                 const clientDetails = await clientDetailsResponse.json();
 
                 // Populate table with client details
@@ -164,7 +164,7 @@
                     </tr>
                 `;
             } catch (clientError) {
-                console.error(Error fetching details for client ${client.ClientID}:, clientError);
+                console.error(`Error fetching details for client ${client.ClientID}:`, clientError);
             }
         }
     
@@ -176,7 +176,7 @@
             for (const investor of investors) {
                 try {
                     // Fetch additional details for the investor
-                    const investorDetailsResponse = await fetch(/InvestorDetails/${investor.InvestorID});
+                    const investorDetailsResponse = await fetch(`/InvestorDetails/${investor.InvestorID}`);
                     const investorDetails = await investorDetailsResponse.json();
     
                     investorsTable.innerHTML += `
@@ -197,7 +197,7 @@
                         </tr>
                     `;
                 } catch (investorError) {
-                    console.error(Error fetching details for investor ${investor.InvestorID}:, investorError);
+                    console.error(`Error fetching details for investor ${investor.InvestorID}:`, investorError);
                 }
             }
            
@@ -227,7 +227,7 @@ console.log(ClosingClients)
         for (const ClosingClient of ClosingClients) {
             try {
                 // Fetch additional details for the client
-                const ClosingClientDetailsResponse = await fetch(/ClientDetails/${ClosingClient.clientID});
+                const ClosingClientDetailsResponse = await fetch(`/ClientDetails/${ClosingClient.clientID}`);
                 const ClosingClientDetails = await ClosingClientDetailsResponse.json();
                 const formattedStartDate = new Date(ClosingClient.startdate).toLocaleDateString('en-US') || 'N/A';
 console.log(ClosingClientDetails)
@@ -275,22 +275,22 @@ Regards,
 SiPs Finance
 .`;
     const encodedMessage = encodeURIComponent(message);
-    const whatsappURL = https://wa.me/+91${phone}?text=${encodedMessage};
+    const whatsappURL = `https://wa.me/+91${phone}?text=${encodedMessage}`;
     window.open(whatsappURL, '_blank');
 }
 
 
 function InvestorWhatsappMessage(phone, PayableInterest) {
-    const message = Hello, We are from SIPS Finance. This is to inform you that we  have deleverd you  amount of ₹${PayableInterest} as part you have investemnt in SiPS. Thankyou Have a Good Day.;
+    const message = `Hello, We are from SIPS Finance. This is to inform you that we  have deleverd you  amount of ₹${PayableInterest} as part you have investemnt in SiPS. Thankyou Have a Good Day.`;
     const encodedMessage = encodeURIComponent(message);
-    const whatsappURL = https://wa.me/+91${phone}?text=${encodedMessage};
+    const whatsappURL = `https://wa.me/+91${phone}?text=${encodedMessage}`;
     window.open(whatsappURL, '_blank');
 }
 
 function ClosingClientWhatsappMessage(phone, PayableInterest,amount) {
-    const message = Hello, We are from SIPS Finance. This is to inform you that your loan has closed of ₹${PayableInterest}+${amount}. Please settle it at the earliest.;
+    const message = `Hello, We are from SIPS Finance. This is to inform you that your loan has closed of ₹${PayableInterest}+${amount}. Please settle it at the earliest.`;
     const encodedMessage = encodeURIComponent(message);
-    const whatsappURL = https://wa.me/+91${phone}?text=${encodedMessage};
+    const whatsappURL = `https://wa.me/+91${phone}?text=${encodedMessage}`;
     window.open(whatsappURL, '_blank');
 }
 
@@ -300,7 +300,7 @@ function confirmPay(InvestmentID,PayableInterest) {
             // Show confirmation alert
             if (confirm("Are you sure you  paid this Invester")) {
                 // Action if user confirms
-                window.location.href = /InvestorEMIPay/${InvestmentID}?payableInterest=${PayableInterest};
+                window.location.href = `/InvestorEMIPay/${InvestmentID}?payableInterest=${PayableInterest}`;
                 alert(" Done.");
             } else {
                 // Action if user cancels
